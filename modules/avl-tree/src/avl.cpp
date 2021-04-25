@@ -139,7 +139,7 @@ CNode* CAvl::Remove(const key& x, CNode* t) {
             return SingleLeftRotate(t);
         } else {
             //
-            //  
+            //
             //
             return DoubleLeftRotate(t);
         }
