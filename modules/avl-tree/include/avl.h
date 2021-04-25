@@ -5,7 +5,6 @@
 
 using key = int64_t;
 
-key GetRandomKey(int64_t nBegin, int64_t nEnd);
 
 struct CNode {
     key data_;

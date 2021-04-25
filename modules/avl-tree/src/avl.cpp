@@ -184,12 +184,3 @@ key CAvl::GetRoot() const {
         return key();
     }
 }
-
-key GetRandomKey(int64_t nBegin, int64_t nEnd) {
-    static std::random_device random_device;
-    static std::mt19937 generator(random_device());
-
-    static std::uniform_int_distribution<key> distribution(nBegin, nEnd);
-
-    return distribution(generator);
-}

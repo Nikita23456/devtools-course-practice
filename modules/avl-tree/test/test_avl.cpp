@@ -5,8 +5,6 @@
 #include "include/avl.h"
 
 const int nLenght = 100000;
-const int32_t nBegin = -10000;
-const int32_t nEnd = 10000;
 
 TEST(CAvlTest,
     CanCreateDefaultCAvl) {
@@ -33,14 +31,13 @@ TEST(CAvlTest,
 TEST(CAvlTest,
     CanInsertAndFindALotOfObjects) {
     CAvl tree;
-    std::vector<key> vKeys(nLenght);
+    std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < nLenght; i++) {
-        vKeys.push_back(GetRandomKey(nBegin, nEnd));
+    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
         tree.Insert(vKeys[i]);
     }
 
-    for (int32_t i = 0; i < nLenght; i++) {
+    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
         ASSERT_EQ(vKeys[i], tree.Find(vKeys[i]));
     }
 }
@@ -48,10 +45,9 @@ TEST(CAvlTest,
 TEST(CAvlTest,
     CanRemoveObject) {
     CAvl tree;
-    std::vector<key> vKeys(nLenght);
+    std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13 };
 
-    for (int32_t i = 0; i < nLenght; i++) {
-        vKeys.push_back(GetRandomKey(nBegin, nEnd));
+    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
         tree.Insert(vKeys[i]);
     }
 
@@ -62,10 +58,9 @@ TEST(CAvlTest,
 TEST(CAvlTest,
     CanRemoveALotOfObjects) {
     CAvl tree;
-    std::vector<key> vKeys(nLenght);
+    std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13, 15, 17, 21, 23, 24 };
 
-    for (int32_t i = 0; i < nLenght; i++) {
-        vKeys.push_back(GetRandomKey(nBegin, nEnd));
+    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
         tree.Insert(vKeys[i]);
     }
 
@@ -92,14 +87,13 @@ TEST(CAvlTest,
 TEST(CAvlTest,
     CanRemoveAllTree) {
     CAvl tree;
-    std::vector<key> vKeys(nLenght);
+    std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < nLenght; i++) {
-        vKeys.push_back(GetRandomKey(nBegin, nEnd));
+    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
         tree.Insert(vKeys[i]);
     }
 
-    for (int32_t i = 0; i < nLenght; i++) {
+    for (int32_t i = 0; i < vKeys.size(); i++) {
         tree.Remove(vKeys[i]);
     }
 
