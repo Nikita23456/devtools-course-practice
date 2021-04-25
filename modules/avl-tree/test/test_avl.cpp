@@ -33,12 +33,12 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < 2; i++) {
-        tree.Insert(vKeys[i]);
+    for (int number : vKeys) {
+        tree.Insert(number);
     }
 
-    for (int32_t i = 0; i < 2; i++) {
-        ASSERT_EQ(vKeys[i], tree.Find(vKeys[i]));
+    for (int number : vKeys) {
+        ASSERT_EQ(number, tree.Find(number));
     }
 }
 
@@ -47,8 +47,8 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13 };
 
-    for (int32_t i = 0; i < 5; i++) {
-        tree.Insert(vKeys[i]);
+    for (int number : vKeys) {
+        tree.Insert(number);
     }
 
     tree.Remove(vKeys[5]);
@@ -60,8 +60,8 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13, 15, 17, 21, 23, 24 };
 
-    for (int32_t i = 0; i < 10; i++) {
-        tree.Insert(vKeys[i]);
+    for (int number: vKeys) {
+        tree.Insert(number);
     }
 
     tree.Remove(vKeys[5]);
@@ -89,12 +89,12 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < 2; i++) {
-        tree.Insert(vKeys[i]);
+    for (int number : vKeys) {
+        tree.Insert(number);
     }
 
-    for (int32_t i = 0; i < 2; i++) {
-        tree.Remove(vKeys[i]);
+    for (int number : vKeys) {
+        tree.Remove(number);
     }
 
     EXPECT_EQ(key(), tree.GetRoot());
@@ -104,7 +104,7 @@ TEST(CAvlTest,
     CanInsertObjectsAscending) {
     CAvl tree;
 
-    for (int32_t i = 0; i < nLenght; i++) {
+    for (uint32_t i = 0; i < nLenght; i++) {
         tree.Insert(i);
         EXPECT_EQ(i, tree.Find(i));
     }
@@ -114,7 +114,7 @@ TEST(CAvlTest,
     CanInsertObjectsDescending) {
     CAvl tree;
 
-    for (int32_t i = nLenght; i != 0; i--) {
+    for (uint32_t i = nLenght; i != 0; i--) {
         tree.Insert(i);
         EXPECT_EQ(i, tree.Find(i));
     }
@@ -148,11 +148,11 @@ TEST(CAvlTest,
     CanRemoveObjectsAscending) {
     CAvl tree;
 
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         tree.Insert(i);
     }
 
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         tree.Remove(i);
         EXPECT_EQ(key(), tree.Find(i));
     }
@@ -162,11 +162,11 @@ TEST(CAvlTest,
     CanRemoveObjectsDescending) {
     CAvl tree;
 
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         tree.Insert(i);
     }
 
-    for (int32_t i = nLenght; i != 0; i--) {
+    for (uint32_t i = nLenght; i != 0; i--) {
         tree.Remove(i);
         EXPECT_EQ(key(), tree.Find(i));
     }
@@ -176,7 +176,7 @@ TEST(CAvlTest,
     CanRemoveRoot) {
     CAvl tree;
 
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         tree.Insert(i);
     }
 
@@ -198,13 +198,13 @@ TEST(CAvlTest,
     CanRemoveNonexistObject) {
     CAvl tree;
 
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         tree.Insert(i);
     }
 
     key nRoot = tree.GetRoot();
     tree.Remove(-1);
-    for (int32_t i = 0; i != nLenght; i++) {
+    for (uint32_t i = 0; i != nLenght; i++) {
         EXPECT_EQ(i, tree.Find(i));
     }
     EXPECT_EQ(key(), tree.Find(-1));
