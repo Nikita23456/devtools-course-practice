@@ -33,11 +33,11 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
+    for (int32_t i = 0; i < 2; i++) {
         tree.Insert(vKeys[i]);
     }
 
-    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
+    for (int32_t i = 0; i < 2; i++) {
         ASSERT_EQ(vKeys[i], tree.Find(vKeys[i]));
     }
 }
@@ -47,7 +47,7 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13 };
 
-    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
+    for (int32_t i = 0; i < 5; i++) {
         tree.Insert(vKeys[i]);
     }
 
@@ -60,7 +60,7 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13, 15, 17, 21, 23, 24 };
 
-    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
+    for (int32_t i = 0; i < 10; i++) {
         tree.Insert(vKeys[i]);
     }
 
@@ -89,11 +89,11 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6 };
 
-    for (int32_t i = 0; i < vKeys.size() - 1; i++) {
+    for (int32_t i = 0; i < 2; i++) {
         tree.Insert(vKeys[i]);
     }
 
-    for (int32_t i = 0; i < vKeys.size(); i++) {
+    for (int32_t i = 0; i < 2; i++) {
         tree.Remove(vKeys[i]);
     }
 
