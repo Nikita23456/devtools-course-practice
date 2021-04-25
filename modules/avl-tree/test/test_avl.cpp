@@ -60,7 +60,7 @@ TEST(CAvlTest,
     CAvl tree;
     std::vector<int> vKeys = { 2, 4, 6, 9, 11, 13, 15, 17, 21, 23, 24 };
 
-    for (int number: vKeys) {
+    for (int number : vKeys) {
         tree.Insert(number);
     }
 
