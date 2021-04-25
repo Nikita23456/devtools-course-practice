@@ -37,7 +37,7 @@ CNode* CAvl::Insert(const key& x, CNode* t) {
 }
 
 CNode* CAvl::SingleRightRotate(CNode* t) {
-    CNode* u = t->pLeft_;
+    CNode *u = t->pLeft_;
     t->pLeft_ = u->pRight_;
     u->pRight_ = t;
     t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
@@ -46,7 +46,7 @@ CNode* CAvl::SingleRightRotate(CNode* t) {
 }
 
 CNode* CAvl::SingleLeftRotate(CNode* t) {
-    CNode* u = t->pRight_;
+    CNode *u = t->pRight_;
     t->pRight_ = u->pLeft_;
     u->pLeft_ = t;
     t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
@@ -73,7 +73,7 @@ CNode* CAvl::FindMin(CNode* t) {
 }
 
 CNode* CAvl::Remove(const key& x, CNode* t) {
-    CNode* temp;
+    CNode *temp;
 
     if (t == nullptr) {
         //
@@ -164,7 +164,7 @@ void CAvl::Remove(const key& x) {
 }
 
 key CAvl::Find(const key & x) {
-    CNode * t = this->pRoot_;
+    CNode* t = this->pRoot_;
     while (t != nullptr) {
         if (x < t->data_) {
             t = t->pLeft_;
