@@ -1,7 +1,6 @@
 // Copyright 2021 Kirichenko Nikita
 
 #include <algorithm>
-#include <random>
 #include "include/avl.h"
 
 using std::max;
@@ -76,29 +75,16 @@ CNode* CAvl::Remove(const key& x, CNode* t) {
     CNode *temp;
 
     if (t == nullptr) {
-        //
-        // Element not found
-        //
         return nullptr;
     } else if (x < t->data_) {
-        //
-        // Searching for element
-        //
         t->pLeft_ = Remove(x, t->pLeft_);
     } else if (x > t->data_) {
         t->pRight_ = Remove(x, t->pRight_);
     } else if (t->pLeft_ && t->pRight_) {
-        //
-        // Element found
-        // With 2 children
-        //
         temp = FindMin(t->pRight_);
         t->data_ = temp->data_;
         t->pRight_ = Remove(t->data_, t->pRight_);
     } else {
-        //
-        // With one or zero child
-        //
         temp = t;
         if (t->pLeft_ == nullptr) {
             t = t->pRight_;
@@ -113,34 +99,15 @@ CNode* CAvl::Remove(const key& x, CNode* t) {
     t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
 
     if (Height(t->pLeft_) - Height(t->pRight_) == 2) {
-        //
-        // If node is unbalanced
-        // If left node is deleted, right case
-        //
         if (Height(t->pLeft_->pLeft_) - Height(t->pLeft_->pRight_) == 1) {
-            //
-            // Right right case
-            //
             return SingleRightRotate(t);
         } else {
-            //
-            // Right left case
-            //
             return DoubleRightRotate(t);
         }
     } else if (Height(t->pRight_) - Height(t->pLeft_) == 2) {
-        //
-        // If Right node is deleted, left case
-        //
         if (Height(t->pRight_->pRight_) - Height(t->pRight_->pLeft_) == 1) {
-            //
-            // Left left case
-            //
             return SingleLeftRotate(t);
         } else {
-            //
-            //
-            //
             return DoubleLeftRotate(t);
         }
     }

@@ -128,7 +128,6 @@ TEST(CAvlTest,
     tree.Insert(5);
     tree.Insert(7);
     tree.Insert(9);
-    // There is double left rotation will be executed
     tree.Insert(8);
     EXPECT_EQ(8, tree.Find(8));
 }
@@ -141,7 +140,6 @@ TEST(CAvlTest,
     tree.Insert(6);
     tree.Insert(3);
     tree.Insert(1);
-    // There is double right rotation will be executed
     tree.Insert(2);
     EXPECT_EQ(2, tree.Find(2));
 }
