@@ -7,10 +7,10 @@ using key = int64_t;
 
 
 struct CNode {
-    key data_;
-    CNode *pLeft_;
-    CNode *pRight_;
-    int height_;
+    key data;
+    CNode *pLeft;
+    CNode *pRight;
+    int height;
 };
 class CAvl {
  private:
@@ -22,7 +22,7 @@ class CAvl {
     CNode* FindMin(CNode* t);
     CNode* Remove(const key& x, CNode* t);
     int Height(CNode* t);
-    CNode *pRoot_;
+    CNode *pRoot;
  public:
     CAvl();
     key Find(const key& x);

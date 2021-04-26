@@ -8,22 +8,22 @@ using std::max;
 CNode* CAvl::Insert(const key& x, CNode* t) {
     if (t == nullptr) {
         t = new CNode;
-        t->data_ = x;
-        t->height_ = 0;
-        t->pLeft_ = t->pRight_ = nullptr;
-    } else if (x < t->data_) {
-        t->pLeft_ = Insert(key(x), t->pLeft_);
-        if (Height(t->pLeft_) - Height(t->pRight_) == 2) {
-            if (x < t->pLeft_->data_) {
+        t->data = x;
+        t->height = 0;
+        t->pLeft = t->pRight = nullptr;
+    } else if (x < t->data) {
+        t->pLeft = Insert(key(x), t->pLeft);
+        if (Height(t->pLeft) - Height(t->pRight) == 2) {
+            if (x < t->pLeft->data) {
                 t = SingleRightRotate(t);
             } else {
                 t = DoubleRightRotate(t);
             }
         }
-    } else if (x > t->data_) {
-        t->pRight_ = Insert(key(x), t->pRight_);
-        if (Height(t->pRight_) - Height(t->pLeft_) == 2) {
-            if (x > t->pRight_->data_) {
+    } else if (x > t->data) {
+        t->pRight = Insert(key(x), t->pRight);
+        if (Height(t->pRight) - Height(t->pLeft) == 2) {
+            if (x > t->pRight->data) {
                 t = SingleLeftRotate(t);
             } else {
                 t = DoubleLeftRotate(t);
@@ -31,43 +31,43 @@ CNode* CAvl::Insert(const key& x, CNode* t) {
         }
     }
 
-    t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
+    t->height = max(Height(t->pLeft), Height(t->pRight)) + 1;
     return t;
 }
 
 CNode* CAvl::SingleRightRotate(CNode* t) {
-    CNode *u = t->pLeft_;
-    t->pLeft_ = u->pRight_;
-    u->pRight_ = t;
-    t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
-    u->height_ = max(Height(u->pLeft_), t->height_) + 1;
+    CNode *u = t->pLeft;
+    t->pLeft = u->pRight;
+    u->pRight = t;
+    t->height = max(Height(t->pLeft), Height(t->pRight)) + 1;
+    u->height = max(Height(u->pLeft), t->height) + 1;
     return u;
 }
 
 CNode* CAvl::SingleLeftRotate(CNode* t) {
-    CNode *u = t->pRight_;
-    t->pRight_ = u->pLeft_;
-    u->pLeft_ = t;
-    t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
-    u->height_ = max(Height(t->pRight_), t->height_) + 1;
+    CNode *u = t->pRight;
+    t->pRight = u->pLeft;
+    u->pLeft = t;
+    t->height = max(Height(t->pLeft), Height(t->pRight)) + 1;
+    u->height = max(Height(t->pRight), t->height) + 1;
     return u;
 }
 
 CNode* CAvl::DoubleLeftRotate(CNode* t) {
-    t->pRight_ = SingleRightRotate(t->pRight_);
+    t->pRight = SingleRightRotate(t->pRight);
     return SingleLeftRotate(t);
 }
 
 CNode* CAvl::DoubleRightRotate(CNode* t) {
-    t->pLeft_ = SingleLeftRotate(t->pLeft_);
+    t->pLeft = SingleLeftRotate(t->pLeft);
     return SingleRightRotate(t);
 }
 
 CNode* CAvl::FindMin(CNode* t) {
-    if (t->pLeft_ == nullptr) {
+    if (t->pLeft == nullptr) {
         return t;
     } else {
-        return FindMin(t->pLeft_);
+        return FindMin(t->pLeft);
     }
 }
 
@@ -76,36 +76,36 @@ CNode* CAvl::Remove(const key& x, CNode* t) {
 
     if (t == nullptr) {
         return nullptr;
-    } else if (x < t->data_) {
-        t->pLeft_ = Remove(x, t->pLeft_);
-    } else if (x > t->data_) {
-        t->pRight_ = Remove(x, t->pRight_);
-    } else if (t->pLeft_ && t->pRight_) {
-        temp = FindMin(t->pRight_);
-        t->data_ = temp->data_;
-        t->pRight_ = Remove(t->data_, t->pRight_);
+    } else if (x < t->data) {
+        t->pLeft = Remove(x, t->pLeft);
+    } else if (x > t->data) {
+        t->pRight = Remove(x, t->pRight);
+    } else if (t->pLeft && t->pRight) {
+        temp = FindMin(t->pRight);
+        t->data = temp->data;
+        t->pRight = Remove(t->data, t->pRight);
     } else {
         temp = t;
-        if (t->pLeft_ == nullptr) {
-            t = t->pRight_;
-        } else if (t->pRight_ == nullptr) {
-            t = t->pLeft_;
+        if (t->pLeft == nullptr) {
+            t = t->pRight;
+        } else if (t->pRight == nullptr) {
+            t = t->pLeft;
         }
         delete temp;
     }
     if (t == nullptr)
         return t;
 
-    t->height_ = max(Height(t->pLeft_), Height(t->pRight_)) + 1;
+    t->height = max(Height(t->pLeft), Height(t->pRight)) + 1;
 
-    if (Height(t->pLeft_) - Height(t->pRight_) == 2) {
-        if (Height(t->pLeft_->pLeft_) - Height(t->pLeft_->pRight_) == 1) {
+    if (Height(t->pLeft) - Height(t->pRight) == 2) {
+        if (Height(t->pLeft->pLeft) - Height(t->pLeft->pRight) == 1) {
             return SingleRightRotate(t);
         } else {
             return DoubleRightRotate(t);
         }
-    } else if (Height(t->pRight_) - Height(t->pLeft_) == 2) {
-        if (Height(t->pRight_->pRight_) - Height(t->pRight_->pLeft_) == 1) {
+    } else if (Height(t->pRight) - Height(t->pLeft) == 2) {
+        if (Height(t->pRight->pRight) - Height(t->pRight->pLeft) == 1) {
             return SingleLeftRotate(t);
         } else {
             return DoubleLeftRotate(t);
@@ -115,38 +115,38 @@ CNode* CAvl::Remove(const key& x, CNode* t) {
 }
 
 int CAvl::Height(CNode* t) {
-    return (t == nullptr ? -1 : t->height_);
+    return (t == nullptr ? -1 : t->height);
 }
 
 CAvl::CAvl() {
-    pRoot_ = nullptr;
+    pRoot = nullptr;
 }
 
 void CAvl::Insert(const key& x) {
-    pRoot_ = Insert(x, pRoot_);
+    pRoot = Insert(x, pRoot);
 }
 
 void CAvl::Remove(const key& x) {
-    pRoot_ = Remove(x, pRoot_);
+    pRoot = Remove(x, pRoot);
 }
 
 key CAvl::Find(const key & x) {
-    CNode* t = this->pRoot_;
+    CNode* t = this->pRoot;
     while (t != nullptr) {
-        if (x < t->data_) {
-            t = t->pLeft_;
-        } else if (x > t->data_) {
-            t = t->pRight_;
-        } else if (x == t->data_) {
-            return (t->data_);
+        if (x < t->data) {
+            t = t->pLeft;
+        } else if (x > t->data) {
+            t = t->pRight;
+        } else if (x == t->data) {
+            return (t->data);
         }
     }
     return key();
 }
 
 key CAvl::GetRoot() const {
-    if (pRoot_) {
-        return pRoot_->data_;
+    if (pRoot) {
+        return pRoot->data;
     } else {
         return key();
     }
