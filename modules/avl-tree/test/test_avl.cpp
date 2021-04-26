@@ -1,7 +1,9 @@
 // Copyright 2021 Kirichenko Nikita
 
 #include <gtest/gtest.h>
+
 #include <vector>
+
 #include "include/avl.h"
 
 const int nLenght = 100000;
@@ -52,7 +54,7 @@ TEST(CAvlTest,
     }
 
     tree.Remove(vKeys[5]);
-    EXPECT_EQ(key(), tree.Find(vKeys[5]));
+    ASSERT_EQ(key(), tree.Find(vKeys[5]));
 }
 
 TEST(CAvlTest,
@@ -65,23 +67,23 @@ TEST(CAvlTest,
     }
 
     tree.Remove(vKeys[5]);
-    EXPECT_EQ(key(), tree.Find(vKeys[5]));
+    ASSERT_EQ(key(), tree.Find(vKeys[5]));
 
     tree.Remove(vKeys[1]);
-    EXPECT_EQ(key(), tree.Find(vKeys[1]));
+    ASSERT_EQ(key(), tree.Find(vKeys[1]));
 
     tree.Remove(vKeys[6]);
-    EXPECT_EQ(key(), tree.Find(vKeys[6]));
+    ASSERT_EQ(key(), tree.Find(vKeys[6]));
 
     tree.Remove(vKeys[2]);
-    EXPECT_EQ(key(), tree.Find(vKeys[2]));
+    ASSERT_EQ(key(), tree.Find(vKeys[2]));
 
-    EXPECT_EQ(vKeys[0], tree.Find(vKeys[0]));
-    EXPECT_EQ(vKeys[3], tree.Find(vKeys[3]));
-    EXPECT_EQ(vKeys[4], tree.Find(vKeys[4]));
-    EXPECT_EQ(vKeys[7], tree.Find(vKeys[7]));
-    EXPECT_EQ(vKeys[8], tree.Find(vKeys[8]));
-    EXPECT_EQ(vKeys[9], tree.Find(vKeys[9]));
+    ASSERT_EQ(vKeys[0], tree.Find(vKeys[0]));
+    ASSERT_EQ(vKeys[3], tree.Find(vKeys[3]));
+    ASSERT_EQ(vKeys[4], tree.Find(vKeys[4]));
+    ASSERT_EQ(vKeys[7], tree.Find(vKeys[7]));
+    ASSERT_EQ(vKeys[8], tree.Find(vKeys[8]));
+    ASSERT_EQ(vKeys[9], tree.Find(vKeys[9]));
 }
 
 TEST(CAvlTest,
@@ -97,7 +99,7 @@ TEST(CAvlTest,
         tree.Remove(number);
     }
 
-    EXPECT_EQ(key(), tree.GetRoot());
+    ASSERT_EQ(key(), tree.GetRoot());
 }
 
 TEST(CAvlTest,
@@ -106,7 +108,7 @@ TEST(CAvlTest,
 
     for (uint32_t i = 0; i < nLenght; i++) {
         tree.Insert(i);
-        EXPECT_EQ(i, tree.Find(i));
+        ASSERT_EQ(i, tree.Find(i));
     }
 }
 
@@ -116,7 +118,7 @@ TEST(CAvlTest,
 
     for (uint32_t i = nLenght; i != 0; i--) {
         tree.Insert(i);
-        EXPECT_EQ(i, tree.Find(i));
+        ASSERT_EQ(i, tree.Find(i));
     }
 }
 
@@ -129,7 +131,7 @@ TEST(CAvlTest,
     tree.Insert(7);
     tree.Insert(9);
     tree.Insert(8);
-    EXPECT_EQ(8, tree.Find(8));
+    ASSERT_EQ(8, tree.Find(8));
 }
 
 TEST(CAvlTest,
@@ -141,7 +143,7 @@ TEST(CAvlTest,
     tree.Insert(3);
     tree.Insert(1);
     tree.Insert(2);
-    EXPECT_EQ(2, tree.Find(2));
+    ASSERT_EQ(2, tree.Find(2));
 }
 
 TEST(CAvlTest,
@@ -154,7 +156,7 @@ TEST(CAvlTest,
 
     for (uint32_t i = 0; i != nLenght; i++) {
         tree.Remove(i);
-        EXPECT_EQ(key(), tree.Find(i));
+        ASSERT_EQ(key(), tree.Find(i));
     }
 }
 
@@ -168,7 +170,7 @@ TEST(CAvlTest,
 
     for (uint32_t i = nLenght; i != 0; i--) {
         tree.Remove(i);
-        EXPECT_EQ(key(), tree.Find(i));
+        ASSERT_EQ(key(), tree.Find(i));
     }
 }
 
@@ -182,7 +184,7 @@ TEST(CAvlTest,
 
     key nRoot = tree.GetRoot();
     tree.Remove(nRoot);
-    EXPECT_EQ(key(), tree.Find(nRoot));
+    ASSERT_EQ(key(), tree.Find(nRoot));
 }
 
 TEST(CAvlTest,
@@ -190,8 +192,8 @@ TEST(CAvlTest,
     CAvl tree;
     tree.Insert(0);
     tree.Remove(0);
-    EXPECT_EQ(0, tree.Find(0));
-    EXPECT_EQ(key(), tree.Find(-1));
+    ASSERT_EQ(0, tree.Find(0));
+    ASSERT_EQ(key(), tree.Find(-1));
 }
 
 TEST(CAvlTest,
@@ -205,7 +207,7 @@ TEST(CAvlTest,
     key nRoot = tree.GetRoot();
     tree.Remove(-1);
     for (uint32_t i = 0; i != nLenght; i++) {
-        EXPECT_EQ(i, tree.Find(i));
+        ASSERT_EQ(i, tree.Find(i));
     }
-    EXPECT_EQ(key(), tree.Find(-1));
+    ASSERT_EQ(key(), tree.Find(-1));
 }
