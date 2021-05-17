@@ -1,7 +1,7 @@
 // Copyright 2021 Kirichenko Nikita
 
-#ifndef MODULES_RB_TREE_INCLUDE_RB_OPERATION_H_
-#define MODULES_RB_TREE_INCLUDE_RB_OPERATION_H_
+#ifndef MODULES_RB_TREES_INCLUDE_RB_OPERATION_H_
+#define MODULES_RB_TREES_INCLUDE_RB_OPERATION_H_
 
 #include <string>
 #include <vector>
@@ -45,4 +45,4 @@ class GetRootOperation : public RBOperation {
     std::string operator()(RBTree* tree, const std::vector<int>& arg) override;
 };
 
-#endif  // MODULES_RB_TREE_INCLUDE_RB_OPERATION_H_
+#endif  // MODULES_RB_TREES_INCLUDE_RB_OPERATION_H_
