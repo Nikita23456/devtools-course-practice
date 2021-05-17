@@ -1,0 +1,84 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a Red-black tree application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_detects_Wrong_Args
+    COMMAND ${APPLICATION} ins 1
+)
+
+set_tests_properties (${prefix}_detects_Wrong_Args PROPERTIES
+    PASS_REGULAR_EXPRESSION "Bad arguments!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add_And_Find
+    COMMAND ${APPLICATION} insert 1 find 1
+)
+
+set_tests_properties (${prefix}_can_Add_And_Find PROPERTIES
+    PASS_REGULAR_EXPRESSION "(1 is found)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_сant_Add_Wrong_Number
+    COMMAND ${APPLICATION} insert a
+)
+
+set_tests_properties (${prefix}_сant_Add_Wrong_Number PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid value: a"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_сant_Add_Wrong_Garbage_Value
+    COMMAND ${APPLICATION} insert -155asdasd
+)
+
+set_tests_properties (${prefix}_сant_Add_Wrong_Garbage_Value PROPERTIES
+    PASS_REGULAR_EXPRESSION "Invalid value: -155asdasd"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cant_Remove_Not_Existing_Elem
+    COMMAND ${APPLICATION} remove 1
+)
+
+set_tests_properties (${prefix}_cant_Remove_Not_Existing_Elem PROPERTIES
+    PASS_REGULAR_EXPRESSION "(No that data in tree)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Get_Root
+    COMMAND ${APPLICATION} insert 1 insert 2 insert 3 getRoot
+)
+
+set_tests_properties (${prefix}_can_Get_Root PROPERTIES
+    PASS_REGULAR_EXPRESSION "(Root value: 2)"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_cant_Get_Root_Of_Empty_Tree
+    COMMAND ${APPLICATION} getRoot
+)
+
+set_tests_properties (${prefix}_cant_Get_Root_Of_Empty_Tree PROPERTIES
+    PASS_REGULAR_EXPRESSION "(Tree is empty)"
+    LABELS "${MODULE}")

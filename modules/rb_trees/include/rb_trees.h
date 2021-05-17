@@ -28,7 +28,7 @@ struct Node {
 
 class RBTree {
     Node *NIL;
-    Node *root;
+    Node *_root;
     Node *current;
 
     unsigned int nodes_number;
@@ -56,7 +56,9 @@ class RBTree {
 
     unsigned int getNodesNumber() const;
 
-    bool findNode(const int value);
+    Node* getRoot() const;
+    Node* findNode(const int& value);
+
     void insertNode(Node *node);
     void removeNode(const int value);
 
