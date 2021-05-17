@@ -1,7 +1,7 @@
 // Copyright 2021 Kirichenko Nikita
 
-#ifndef MODULES_RB_TREE_INCLUDE_RB_TREES_APP_H_
-#define MODULES_RB_TREE_INCLUDE_RB_TREES_APP_H_
+#ifndef MODULES_RB_TREES_INCLUDE_RB_TREES_APP_H_
+#define MODULES_RB_TREES_INCLUDE_RB_TREES_APP_H_
 
 #include <string>
 #include <sstream>
@@ -19,4 +19,4 @@ class RBTreeApp {
     std::stringstream _sstream;
 };
 
-#endif  // MODULES_RB_TREE_INCLUDE_RB_TREES_APP_H_
+#endif  // MODULES_RB_TREES_INCLUDE_RB_TREES_APP_H_
