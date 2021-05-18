@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <vector>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <limits>
 #include "include/rb_trees_app.h"
@@ -33,7 +34,7 @@ std::string RBTreeApp::operator()(int argc, const char** argv) {
 }
 
 int RBTreeApp::ParseNumber(const char* s) {
-    int len = strlen(s);
+    int len = std::strlen(s);
     if ((s[0] != '-' && !isdigit(s[0])) || (s[0] == '-' && len == 1))
         throw std::runtime_error(std::string(s) + " is not the number");
     for (int i = 1; i < len; ++i)
@@ -48,18 +49,18 @@ int RBTreeApp::ParseNumber(const char* s) {
 }
 
 int RBTreeApp::ParseOperation(const char** argv) {
-    if (std::strcmp(*argv, "insert") == 0) {
+    if (strcmp(*argv, "insert") == 0) {
         int value = ParseNumber(*(argv + 1));
         Node* sos = new Node(value);
         t_.insertNode(sos);
         return 2;
     }
-    if (std::strcmp(*argv, "remove") == 0) {
+    if (strcmp(*argv, "remove") == 0) {
         int value = ParseNumber(*(argv + 1));
         t_.removeNode(value);
         return 2;
     }
-    if (std::strcmp(*argv, "find") == 0) {
+    if (strcmp(*argv, "find") == 0) {
         int value = ParseNumber(*(argv + 1));
         bool verdict = t_.findNode(value);
         if (verdict)
