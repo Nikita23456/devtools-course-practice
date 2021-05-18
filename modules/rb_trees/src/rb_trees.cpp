@@ -92,7 +92,7 @@ Node* RBTree::findNode(const int& value) {
             current = current->right;
     }
 
-    return false;
+    return NIL;
 }
 
 void RBTree::insertNode(Node *node) {
