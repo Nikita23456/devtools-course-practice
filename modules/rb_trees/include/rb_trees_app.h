@@ -8,15 +8,15 @@
 #include "include/rb_trees.h"
 
 class RBTreeApp {
+ private:
+    std::string Help(const char *appname);
+    int ParseOperation(const char **argv);
+    int ParseNumber(const char *s);
+    RBTree t_;
+    std::stringstream out_;
  public:
     RBTreeApp() = default;
     std::string operator()(int argc, const char** argv);
- private:
-    std::string help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
-    int parseToValue(std::string strval);
-    RBTree _rb;
-    std::stringstream _sstream;
 };
 
 #endif  // MODULES_RB_TREES_INCLUDE_RB_TREES_APP_H_
