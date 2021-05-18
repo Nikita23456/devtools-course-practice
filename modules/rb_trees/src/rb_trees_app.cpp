@@ -69,7 +69,7 @@ int RBTreeApp::ParseOperation(const char** argv) {
             out_ << "(" << value << " is not found) ";
         return 2;
     }
-    throw std::runtime_error(std::string("Unknown operation: ") +
+    throw std::runtime_error(std::string(" Unknown operation: ") +
         std::string(*argv));
     return 0;
 }
