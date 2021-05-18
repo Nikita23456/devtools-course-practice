@@ -47,7 +47,7 @@ class RBTree {
 
     Node* get_minimum(Node* const node);
 
-public:
+ public:
     RBTree();
     explicit RBTree(Node* node);
     explicit RBTree(const std::vector<int>& vec);

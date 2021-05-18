@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <limits>
 #include "include/rb_trees_app.h"
 
 std::string RBTreeApp::Help(const char* appname) {
@@ -26,8 +27,7 @@ std::string RBTreeApp::operator()(int argc, const char** argv) {
             i += offset;
         }
         return out_.str();
-    }
-    catch (std::runtime_error& re) {
+    } catch(std::runtime_error& re) {
         return re.what();
     }
 }

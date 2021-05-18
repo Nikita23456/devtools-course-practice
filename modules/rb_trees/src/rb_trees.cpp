@@ -140,20 +140,17 @@ void RBTree::removeNode(const int value) {
     if (del_node->left == NIL) {
         x = del_node->right;
         transplant(del_node, del_node->right);
-    }
-    else if (del_node->right == NIL) {
+    } else if (del_node->right == NIL) {
         x = del_node->left;
         transplant(del_node, del_node->left);
-    }
-    else {
+    } else {
         replace_node = get_minimum(del_node->right);
         y_original_color = replace_node->color;
         x = replace_node->right;
 
         if (replace_node->parent == del_node) {
             x->parent = replace_node;
-        }
-        else {
+        } else {
             transplant(replace_node, replace_node->right);
             replace_node->right = del_node->right;
             replace_node->right->parent = replace_node;
@@ -189,8 +186,7 @@ void RBTree::shuffle_for_insert(Node* node) {
                 uncle->color = BLACK;
                 node->parent->parent->color = RED;
                 node = node->parent->parent;
-            }
-            else {
+            } else {
                 if (node == node->parent->right) {
                     node = node->parent;
                     left_rotate(node);
@@ -199,8 +195,7 @@ void RBTree::shuffle_for_insert(Node* node) {
                 node->parent->parent->color = RED;
                 right_rotate(node->parent->parent);
             }
-        }
-        else {
+        } else {
             Node* uncle = node->parent->parent->left;
 
             if (uncle->color == RED) {
@@ -208,8 +203,7 @@ void RBTree::shuffle_for_insert(Node* node) {
                 uncle->color = BLACK;
                 node->parent->parent->color = RED;
                 node = node->parent->parent;
-            }
-            else {
+            } else {
                 if (node == node->parent->left) {
                     node = node->parent;
                     right_rotate(node);
@@ -290,8 +284,7 @@ void RBTree::shuffle_for_remove(Node* node) {
             if (tmp->left->color == BLACK && tmp->right->color == BLACK) {
                 tmp->color = RED;
                 node = node->parent;
-            }
-            else {
+            } else {
                 if (tmp->right->color == BLACK) {
                     tmp->left->color = BLACK;
                     tmp->color = RED;
@@ -304,8 +297,7 @@ void RBTree::shuffle_for_remove(Node* node) {
                 left_rotate(node->parent);
                 node = root;
             }
-        }
-        else {
+        } else {
             Node* tmp = node->parent->left;
 
             if (tmp->color == RED) {
@@ -318,8 +310,7 @@ void RBTree::shuffle_for_remove(Node* node) {
             if (tmp->right->color == BLACK && tmp->left->color == BLACK) {
                 tmp->color = RED;
                 node = node->parent;
-            }
-            else {
+            } else {
                 if (tmp->left->color == BLACK) {
                     tmp->right->color = BLACK;
                     tmp->color = RED;
