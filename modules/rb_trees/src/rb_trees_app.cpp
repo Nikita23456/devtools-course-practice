@@ -1,20 +1,26 @@
 // Copyright 2021 Kirichenko Nikita
 
-#include <stdexcept>
-#include <vector>
-#include <string>
 #include <cstring>
-#include <sstream>
+
 #include <limits>
+
+#include <stdexcept>
+
+#include <string>
+
+#include <sstream>
+
+#include <vector>
+
 #include "include/rb_trees_app.h"
 
 std::string RBTreeApp::Help(const char* appname) {
-    return "This is application for rbtree class\n"
-        "Usage:\n"
-        "> " + std::string(appname) + " actions that described below\n"
-        "Actions:\n"
-        "insert <value> - add value to the tree\n"
-        "remove <value> - delete value from the tree\n"
+    return "This is application for rbtree class\n" \
+        "Usage:\n" \
+        "> " + std::string(appname) + " actions that described below\n" \
+        "Actions:\n" \
+        "insert <value> - add value to the tree\n" \
+        "remove <value> - delete value from the tree\n" \
         "find <value> - find the value in the tree\n";
 }
 
