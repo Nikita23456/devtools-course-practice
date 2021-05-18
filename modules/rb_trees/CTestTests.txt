@@ -19,6 +19,15 @@ add_test(
 set_tests_properties (${prefix}_Can_Print_Help_Without_Arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "This is application for rbtree class"
     LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Out_Reange_Values
+    COMMAND ${APPLICATION} insert 9300000000000000000
+)
+
+set_tests_properties (${prefix}_Out_Reange_Values PROPERTIES
+    PASS_REGULAR_EXPRESSION "Number is out of bounds"
+    LABELS "${MODULE}")
 
 add_test(
     NAME ${prefix}_Can_Add_And_Search
