@@ -33,7 +33,7 @@ std::string RBTreeApp::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
         "  $ " + appname + " <actions> \n\n" +
         "Where <actions> are: \n\n" +
-        "getRoot - get root element from tree\n" +
+        "getRoot  - get root element from tree\n" +
         "find <data> - find element by data\n" +
         "insert <node> - insert node into tree\n" +
         "remove <data> - remove element from tree\n ";
